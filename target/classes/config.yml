@@ -1,7 +1,7 @@
 # Keep this file private. Never send your Groq API key in chat, screenshots, or repositories.
 ai:
   enabled: true
-  api-key: "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"
+  api-key: "<YOUR_GROQ_API_KEY>"
   endpoint: "https://api.groq.com/openai/v1/chat/completions"
   model: "openai/gpt-oss-20b"
   timeout-seconds: 12
