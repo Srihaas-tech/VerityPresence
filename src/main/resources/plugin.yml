@@ -1,0 +1,15 @@
+name: VerityPresence
+version: 1.1.0
+main: me.pangrusak.verity.VerityPresencePlugin
+api-version: 1.16
+author: pangrusak
+commands:
+  verity:
+    description: Talk to or manage your private Verity encounter.
+    usage: /verity <accept|leave|status|message>
+    aliases: [v]
+permissions:
+  verity.use:
+    default: true
+  verity.admin:
+    default: op

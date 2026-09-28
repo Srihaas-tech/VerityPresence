@@ -1,0 +1,6 @@
+package me.pangrusak.verity;
+public final class Json {
+ private Json(){}
+ public static String quote(String s){StringBuilder b=new StringBuilder("\"");for(char c:s.toCharArray()){switch(c){case '\\':b.append("\\\\");break;case '"':b.append("\\\"");break;case '\n':b.append("\\n");break;case '\r':b.append("\\r");break;case '\t':b.append("\\t");break;default: if(c<32)b.append(String.format("\\u%04x",(int)c));else b.append(c);}}return b.append('"').toString();}
+ public static String content(String json){String key="\"content\"";int i=json.indexOf(key);if(i<0)return null;i=json.indexOf(':',i+key.length());if(i<0)return null;i++;while(i<json.length()&&Character.isWhitespace(json.charAt(i)))i++;if(i>=json.length()||json.charAt(i)!='"')return null;i++;StringBuilder o=new StringBuilder();boolean esc=false;for(;i<json.length();i++){char c=json.charAt(i);if(esc){switch(c){case 'n':o.append(' ');break;case 'r':break;case 't':o.append(' ');break;case '"':o.append('"');break;case '\\':o.append('\\');break;case '/':o.append('/');break;default:o.append(c);}esc=false;}else if(c=='\\')esc=true;else if(c=='"')break;else o.append(c);}return o.toString().replaceAll("\\s+"," ").trim();}
+}
